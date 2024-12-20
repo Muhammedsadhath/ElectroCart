@@ -1,0 +1,2 @@
+#to ingnore env file when pushing to github
+.env

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="head-foot-color py-5">
+    <div class="container px-4 px-lg-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Billing Info</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Enter your info</p>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-3">
+            <!-- Order Summary Card -->
+            <div class="card shadow-sm border-0 mb-3">
+                <div class="card-header bg-info text-white">
+                  Order Summary
+                </div>
+                <div class="card-body bg-light">
+                  {% for product in cart_products %}
+                    <span class="fw-bold">{{ product.name }}</span>: 
+                    <span class="text-muted">
+                    {% if product.is_sale %}
+                        ${{ product.sale_price }}
+                    {% else %}
+                        ${{ product.price }}
+                    {% endif %}
+                    </span>
+                    <br>
+                    <span class="text-muted">Quantity:</span>
+                        
+                    {% for key, value in quantities.items %}
+                        {% if key == product.id|slugify %}  
+                            <span class="text-dark">{{ value }}</span>
+                        {% endif %}
+                    {% endfor %}
+                    <br><br>
+                  {% endfor %}
+                  <strong class="text-dark">Total: ${{ totals }}</strong>
+                  <br><br>
+                  <a href="{% url 'cart_summary' %}" class="btn btn-outline-primary btn-sm">Update Items</a>
+                </div>
+            </div>
+
+            <!-- Shipping Info Card -->
+            <div class="card mt-5 mb-2 shadow-sm border-0">
+                <h5 class="card-header bg-success text-white">Shipping Info</h5>
+                <div class="card-body bg-light">
+                 <p><strong>Name:</strong> {{ shipping_info.shipping_full_name }}</p>
+                 <p><strong>Email:</strong> {{ shipping_info.shipping_email }}</p>
+                 <p><strong>Address 1:</strong> {{ shipping_info.shipping_address1 }}</p>
+                 <p><strong>Address 2:</strong> {{ shipping_info.shipping_address2 }}</p>
+                 <p><strong>City:</strong> {{ shipping_info.shipping_city }}</p>
+                 <p><strong>State:</strong> {{ shipping_info.shipping_state }}</p>
+                 <p><strong>Zipcode:</strong> {{ shipping_info.shipping_zipcode }}</p>
+                 <p><strong>Country:</strong> {{ shipping_info.shipping_country }}</p>
+                 <a href="{% url 'checkout' %}" class="btn btn-outline-success">Update Shipping</a>
+                </div>
+            </div>
+
+            <!-- Billing Info Card -->
+            <div class="card mt-5 mb-2 shadow-sm border-0">
+                <h5 class="card-header bg-primary text-white">Billing Info</h5>
+                <div class="card-body bg-light">
+                  <form method="POST" action="{% url 'process_order' %}">  
+                    {% csrf_token %}
+                    {{ billing_form.as_p }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-5">Pay Now</button>
+          </form>
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock content %}

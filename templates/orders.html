@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="container mt-5">
+    <div class="row">
+        <center>
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header">
+                      {{order.id}} -${{order.amount_pay}}
+                    </div>
+                    <div class="card-body">
+                        <b>Email</b>:{{order.email}}<br>
+                        {% if order.date_shipped %}
+                        <b>Date shipped:</b>{{order.date_shipped}}
+                        {% else %}
+                        <b>Date Ordered:</b>{{order.date_ordered}}
+                        {% endif %}<br>
+                        <b>Full name:</b>{{order.full_name}}<br>
+                        <b>Address:</b>{{order.shipping_address}}<br>
+                        {% for item in items %}
+                        <b>item:</b>{{item.product}}
+                        <b>quantity:</b>{{item.quantity}}
+                        <b>price:</b>{{item.price}}
+                        {% endfor %}
+                        <div class="mt-3">
+                           {% if not order.shipped %}                              {% comment %} if order is not shipped {% endcomment %}
+                         <form method="POST"> {% csrf_token %}
+                            <input type="hidden" name="shipping_status" value="true">
+                            <button type="submit" class="btn btn-success">mark as shipped
+                         </form>
+                         {% else %}                                                {% comment %} if order is shipped {% endcomment %}
+                         <form method="POST"> {% csrf_token %}
+                            <input type="hidden" name="shipping_status" value="false">
+                            <button type="submit" class="btn btn-danger">mark as not shipped shipped
+                         </form>
+                         {% endif %}
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            {% comment %} <a href="{% url '' %}" class="btn btn-primary">Go somewhere</a> {% endcomment %}
+        </center>
+    </div>
+</div>
+
+{% endblock content %}
