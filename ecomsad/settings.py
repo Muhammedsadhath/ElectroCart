@@ -31,8 +31,8 @@ SECRET_KEY = 'django-insecure-a_j7svodj*z-v2hf4bdzkm@hwm#y-st7&8k#h1z&$m7cps)@=^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','38ef-2402-3a80-1e13-5c29-618b-e1a5-872a-9bae.ngrok-free.app']
-CSRF_TRUSTED_ORIGINS = ['https://38ef-2402-3a80-1e13-5c29-618b-e1a5-872a-9bae.ngrok-free.app']
+ALLOWED_HOSTS = ['.vercel.app']
+CSRF_TRUSTED_ORIGINS = ['https://c8ae-2402-3a80-445a-1878-61ac-1d65-5cfe-110b.ngrok-free.app']
 
 
 # Application definition
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'store',
     'cart',
     'payment',
+    'paypal.standard.ipn',
 ]
 
 MIDDLEWARE = [
@@ -88,16 +89,16 @@ WSGI_APPLICATION = 'ecomsad.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
 
         
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'railway',
-        # 'USER': 'postgres',
-        # 'PASSWORD': os.environ.get('DB_PASSWORD_YO'),
-        # 'HOST': 'autorack.proxy.rlwy.net',
-        # 'PORT': '17230',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': os.environ.get('DB_PASSWORD_YO'),
+        'HOST': 'autorack.proxy.rlwy.net',
+        'PORT': '17230',
     
     }
 }
@@ -160,3 +161,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#add paypal settings
+#set sandbox true
+
+PAYPAL_TEST = True
+
+PAYPAL_RECIEVER_EMAIL = 'electrocart@gmail.com'  #business sandbox account

@@ -11086,5 +11086,27 @@ footer .row > div {
   }
 }
 .ab{
-  margin-left: 200px;
+  width: 800px;;
+}
+
+/* Custom Styles for PayPal Section */
+.paypal-container {
+  margin: 2rem 0; /* Adds vertical spacing */
+}
+
+.paypal-heading {
+  font-weight: bold;
+  color: #007bff; /* Bootstrap primary color */
+  margin-bottom: 1rem; /* Spacing below the heading */
+  font-size: 1.5rem; /* Slightly larger heading */
+}
+
+.paypal-button-container {
+  display: inline-block; /* Centers the button block */
+  background-color: #f8f9fa; /* Light gray background */
+  padding: 1.5rem; /* Adds padding around the button */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 300px; /* Custom width */
+  height: 100px; /* Custom height */
 }

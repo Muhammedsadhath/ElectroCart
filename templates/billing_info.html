@@ -43,7 +43,6 @@
                   <a href="{% url 'cart_summary' %}" class="btn btn-outline-primary btn-sm">Update Items</a>
                 </div>
             </div>
-
             <!-- Shipping Info Card -->
             <div class="card mt-5 mb-2 shadow-sm border-0">
                 <h5 class="card-header bg-success text-white">Shipping Info</h5>
@@ -59,6 +58,16 @@
                  <a href="{% url 'checkout' %}" class="btn btn-outline-success">Update Shipping</a>
                 </div>
             </div>
+           
+            <div class="paypal-container text-center my-4">
+                <h4 class="paypal-heading">Pay Securely with PayPal</h4>
+                <div class="paypal-button-container">
+                    {{ paypal_form.render }}
+                </div>
+            </div>
+            
+            
+
 
             <!-- Billing Info Card -->
             <div class="card mt-5 mb-2 shadow-sm border-0">

@@ -1,1 +1,17 @@
-pyment success
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg p-4 text-center" style="max-width: 500px; border-radius: 15px;">
+        <div class="card-body">
+            <h1 class="display-4 fw-bold text-success mb-3">Payment Success</h1>
+            <p class="lead fw-normal text-muted">
+                Your order is complete. Thank you for shopping with us!
+            </p>
+            <a href="/" class="btn btn-success btn-lg mt-3 rounded-pill">
+                Back to Home
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}
