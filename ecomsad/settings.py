@@ -59,9 +59,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'ecomsad.urls'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 TEMPLATES = [
     {
@@ -148,11 +151,16 @@ USE_TZ = True
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Add root-level static folder here
-    os.path.join(BASE_DIR, 'staticfiles'),  # If you're using another directory
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')  # Used for collectstatic
+
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),  # Add root-level static folder here
+#     os.path.join(BASE_DIR, 'staticfiles'),  # If you're using another directory
+# ]
+
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # Used for collectstatic
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
