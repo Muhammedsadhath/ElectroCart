@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-a_j7svodj*z-v2hf4bdzkm@hwm#y-st7&8k#h1z&$m7cps)@=^
 DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app']
-CSRF_TRUSTED_ORIGINS = ['https://c8ae-2402-3a80-445a-1878-61ac-1d65-5cfe-110b.ngrok-free.app']
+#CSRF_TRUSTED_ORIGINS = ['https://c8ae-2402-3a80-445a-1878-61ac-1d65-5cfe-110b.ngrok-free.app']
 
 
 # Application definition
@@ -99,7 +99,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': os.environ.get('DB_PASSWORD_YO'),
+        'PASSWORD': 'WAAdBUicMFrGPKhdjLirgBnCQgGqgryb',
         'HOST': 'autorack.proxy.rlwy.net',
         'PORT': '17230',
     
