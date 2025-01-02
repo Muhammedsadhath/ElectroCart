@@ -30,6 +30,7 @@
                             <div class="text-center">
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">{{ product.name }}</h5>
+                                {{ product.description|truncatechars:25 }}...<br>
                                 <!-- Product price-->
                                 <strike>${{ product.price }}</strike>
                                 <br>${{ product.sale_price }} 
